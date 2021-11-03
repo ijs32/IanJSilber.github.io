@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +8,98 @@
 	<link rel="stylesheet" href="main.css"/>
 	<title>Ian Silber's sick website</title>
 </head>
+
 <body class="entire-website">
-	<h1>Hello There!!!</h1>
+	<h1 style="text-align: center;">Hello There!!!</h1>
+		<script>
+
+			var WIDTH=1435, HEIGHT=700, pi=Math.PI;
+			var canvas, ctx, keystate;
+			var player, ai, ball;
+
+			player = {
+				x: null,
+				y: null,
+				width: 15,
+				height: 150,
+
+				update: function() {},
+				draw: function() {
+					ctx.fillRect(this.x, this.y, this.width, this.height);
+				},
+			};
+			ai = {
+				x: null,
+				y: null,
+				width: 15,
+				height: 150,
+
+				update: function() {},
+				draw: function() {
+					ctx.fillRect(this.x, this.y, this.width, this.height);
+				},
+			};
+			ball = {
+				x: null,
+				y: null,
+				side: 20,
+
+				update: function() {},
+				draw: function() {
+					ctx.fillRect(this.x, this.y, this.side, this.side);
+				},
+			};
+			
+			function main() {
+				canvas = document.createElement('canvas');
+				canvas.width = WIDTH;
+				canvas.height = HEIGHT;
+				ctx = canvas.getContext("2d");
+				document.body.appendChild(canvas);
+
+				init();
+
+				var loop = function() {
+					update();
+					draw();
+
+					window.requestAnimationFrame(loop, canvas);
+				};
+				window.requestAnimationFrame(loop, canvas);
+
+			}
+
+			function init() {
+				player.x = player.width;
+				player.y = (HEIGHT - player.height)/2;
+
+				ai.x = WIDTH - (player.width + ai.width);
+				ai.y = (HEIGHT - ai.height)/2;
+
+				ball.x = (WIDTH - ball.side)/2;
+				ball.y = (HEIGHT - ball.side)/2;
+			}
+
+			function update() {
+				ball.update();
+				player.update();
+				ai.update();
+				
+			}
+			
+			function draw() {
+				ball.draw();
+				player.draw();
+				ai.draw();
+			}
+
+			main();
+		</script>
 </body>
 </html>
+
+
+<!-- <div class="el-wrap x">
+	<a href="https://www.linkedin.com/in/iansilber-softwareengineer/" target="_blank"><img class="el y" src="./images/linkedin.png" alt="Linkedin">
+	</a>
+</div> -->
