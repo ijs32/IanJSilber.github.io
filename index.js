@@ -1,5 +1,5 @@
-var WIDTH = 900,
-  HEIGHT = 600,
+var WIDTH = 700,
+  HEIGHT = 450,
   pi = Math.PI;
 var UpArrow = 38,
   DownArrow = 40;
@@ -9,8 +9,8 @@ var player, ai, ball;
 player = {
   x: null,
   y: null,
-  width: 15,
-  height: 150,
+  width: 10,
+  height: 60,
 
   update: function () {
     if (keystate[UpArrow]) {
@@ -28,8 +28,8 @@ player = {
 ai = {
   x: null,
   y: null,
-  width: 15,
-  height: 150,
+  width: 10,
+  height: 60,
 
   update: function () {
     var desty = ball.y - (this.height - ball.side) * 0.5;
@@ -44,7 +44,7 @@ ball = {
   x: null,
   y: null,
   vel: null,
-  side: 20,
+  side: 15,
   speed: 9,
 
   update: function () {
